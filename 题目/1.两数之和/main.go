@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 /*
+【题目】
 题名描述：
 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 
@@ -19,8 +20,8 @@ import "fmt"
 链接：https://leetcode-cn.com/problems/two-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
+【思路】
 
-解题思路：
 该题本质上是一个查找问题，查找满足特定运算的两个数的位置
 
 首先会想到进行暴力计算，即进行两层for循环，第二层for循环进行条件判断，如果满足题意则结束程序并返回
@@ -32,22 +33,47 @@ import "fmt"
 时间效率O(n)
 空间效率O(1)
 总结：查找满足特定运算的两个数的位置，首先去思考hash算法能不能实现想要的结果，如果能，一般考虑通过字典怎么实现。
+
+
 */
-func twoSum(nums []int, target int) []int {
-	m := make(map[int]int)
 
-	for i, n := range nums {
-		if _, ok := m[n]; ok == false {
-			m[target-n] = i
-			continue
+//【代码】
+// 最优解
+func twoSum1(nums []int, target int) []int { // 是一个双向匹配问题
+	m := make(map[int]int) // m[元素] = 序号
+	for i, j := range nums {
+		d := target - j        // 与j匹配的d
+		if v, ok := m[d]; ok { // 判断m[d]是否存在
+			return []int{v, i}
 		}
-		return []int{m[n], i}
+		m[j] = i // 没有匹配的元素则加入字典
 	}
-	return []int{}
+	return []int{0, 0}
 }
 
-func main() {
-	nums := []int{2, 4, 7, 15}
-	target := 9
-	fmt.Println(twoSum(nums, target))
+// 暴力解法
+func twoSum2(nums []int, target int) []int {
+	for i, j := range nums[:len(nums)-1] {
+		fmt.Println(j)
+		for v, u := range nums[i+1:] { // 注意切片后序号会变化!
+			if j+u == target {
+				return []int{i, v + i + 1}
+			}
+		}
+	}
+	return []int{0, 0}
 }
+
+//【主函数】
+func main() {
+}
+
+/*
+【总结】：
+
+
+
+
+
+
+*/
