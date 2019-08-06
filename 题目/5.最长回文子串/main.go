@@ -47,6 +47,31 @@ func longestPalindrome(s string) string {
 	}
 	return max
 }
+func longestPalindrome1(s string) string { // 中心扩展法
+	if len(s) < 1 {
+		return ""
+	}
+	st, e := 0, 0
+	for i := 0; i < len(s); i++ {
+		len1 := expandAroundCenter(s, i, i)   // 奇数长回文的中心
+		len2 := expandAroundCenter(s, i, i+1) // 偶数长回文的中心
+		lenm := max(len1, len2)
+		if lenm > e-st {
+			st = i - (lenm-1)/2
+			e = i + lenm/2
+		}
+	}
+	return s[st : e+1]
+}
+
+func expandAroundCenter(s string, left int, right int) int {
+	L, R := left, right
+	for L >= 0 && R < len(s) && s[L] == s[R] {
+		L--
+		R++
+	}
+	return R - L - 1
+}
 
 //他人优秀代码----------------------------------
 
