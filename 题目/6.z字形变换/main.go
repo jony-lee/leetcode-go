@@ -63,7 +63,7 @@ func convert1(s string, numRows int) string {
 	}
 	result := make([]uint8, len(s))
 	v := 0
-	for i := 0; i < numRows; i++ { // i 为行数
+	for i := 0; i < numRows; i++ { // i 为
 		for k := i; k < len(s); k += (numRows - 1) * 2 { // k为要取的原字符串中字符的索引号
 			result[v] = s[k]
 			v++
