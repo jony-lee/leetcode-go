@@ -1,4 +1,4 @@
-package leetcode_go
+package main
 
 /*
 【题目】
