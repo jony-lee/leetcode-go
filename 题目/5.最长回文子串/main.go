@@ -64,6 +64,13 @@ func longestPalindrome1(s string) string { // 中心扩展法
 	return s[st : e+1]
 }
 
+func max(a, b int) int {
+	if a < b {
+		max(b, a)
+	}
+	return a
+}
+
 func expandAroundCenter(s string, left int, right int) int {
 	L, R := left, right
 	for L >= 0 && R < len(s) && s[L] == s[R] {
