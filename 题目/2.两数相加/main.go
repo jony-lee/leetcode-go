@@ -66,7 +66,7 @@ func (l *ListNode) String() string {
 
 //思路1，成功-------------------------------------------------------
 
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+func addTwoNumbers1(l1 *ListNode, l2 *ListNode) *ListNode {
 	root := &ListNode{}
 	node := root
 	plus := 0 //进位符
@@ -98,6 +98,38 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 //思路2：-------------------------------------------------------
+func addTwoNumbers2(l1 *ListNode, l2 *ListNode) *ListNode {
+	l3 := &ListNode{} // 设定头结点
+	curr := l3        // 保留头结点
+	carry := 0        // 是否进位
+	sum := 0
+	for l1 != nil || l2 != nil {
+		if l1 == nil {
+			sum = carry + l2.Val
+		} else if l2 == nil {
+			sum = carry + l1.Val
+		} else {
+			sum = carry + l2.Val + l1.Val
+		}
+
+		carry = sum / 10
+		curr.Next = &ListNode{ // 废弃头结点,直接创建使用下一结点记录计算
+			Val:  sum % 10, // 计算当前结点值
+			Next: nil,
+		}
+		curr = curr.Next
+		if l1 != nil {
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			l2 = l2.Next
+		}
+		if carry > 0 { // 确保当carry = 1 , 但l1.Next, l2.Next均为nil时,也能够向前进位
+			curr.Next = &ListNode{Val: carry}
+		}
+	}
+	return l3.Next
+}
 
 //
 //func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -164,5 +196,5 @@ func main() {
 		},
 	}
 	fmt.Println(l1, l2)
-	fmt.Println(addTwoNumbers(l1, l2))
+	fmt.Println(addTwoNumbers1(l1, l2))
 }
