@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 /*
+【题目】
 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
 
 比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
@@ -35,35 +36,21 @@ T     S     G
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 
-解题思路：
+【思路】
 //TODO
 
-时间效率O()
-空间效率O()
-总结：
+
+
 */
 
-//思路1-------------------------------------------
-
+//【代码】
 func convert(s string, numRows int) string {
-	list := [][]int{}
-	for i := 0; i < numRows; i++ {
-		list = append(list, []int{})
-	}
-	for _, v := range s {
-
-	}
-}
-
-//他人优秀代码----------------------------------
-// 按行
-func convert1(s string, numRows int) string {
 	if s == "" || len(s) <= numRows || numRows < 2 {
 		return s
 	}
 	result := make([]uint8, len(s))
 	v := 0
-	for i := 0; i < numRows; i++ { // i 为
+	for i := 0; i < numRows; i++ { // i 为行数
 		for k := i; k < len(s); k += (numRows - 1) * 2 { // k为要取的原字符串中字符的索引号
 			result[v] = s[k]
 			v++
@@ -81,10 +68,15 @@ func convert1(s string, numRows int) string {
 	return string(result)
 }
 
-//主函数-------------------------------------------
+//【主函数】
 
 func main() {
 	s := "LEETCODEISHIRING"
 	numRows := 4
 	fmt.Println(convert(s, numRows))
 }
+
+/*
+【总结】：
+
+*/
