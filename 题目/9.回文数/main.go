@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 【题目】
@@ -54,6 +56,7 @@ func isPalindrome(x int) bool {
 func main() {
 	a := 12211
 	fmt.Println(isPalindrome(a))
+
 }
 
 /*

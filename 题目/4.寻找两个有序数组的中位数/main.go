@@ -40,16 +40,47 @@ nums2 = [3, 4]
 //思路1-------------------------------------------
 
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	mLen, nLen := len(nums1), len(nums2)
-	k := (mLen + nLen) / 2 //k为奇数，则正好是中位数，k为偶数，则需要和临近左边一个数相加除2
-	if nums1[0] > nums2[nLen-1] {
-		if k < mLen {
+	//len1, len2 := len(nums1), len(nums2)
+	//var low, high []int
+	//var j,k int
+	//if nums1[0]>nums2[0]{
+	//	low= nums2[:]
+	//}else {
+	//	low=nums1[:]
+	//}
+	//if nums1[len1-1]>nums2[len2-1]{
+	//	high= nums1[:]
+	//}else {
+	//	high=nums2[:]
+	//}
+	//start,end:= 0,len(high)-1
+	//for{
+	//	if start>len(low)-1{
+	//		break
+	//	}
+	//	if end<0{
+	//		break
+	//	}
+	//	j = (len(low)-1)/2	//中位数或中位数左边一个
+	//	k = (len(high))/2	//中位数或中位数右边一个
+	//	if low[j] > high[0]{
+	//		low = low[j:]
+	//	}else{
+	//
+	//	}
+	//}
+	//if
 
-		}
-	}
-
-	a := mLen / 2
-	b := nLen / 2
+	//len1, len2 := len(nums1), len(nums2)
+	//k := (len1 + len2) / 2 //k为奇数，则正好是中位数，k为偶数，则需要和临近左边一个数相加除2
+	//if nums1[0] > nums2[len2-1] {
+	//	if k < len1 {
+	//		return nums1[k]
+	//	}
+	//}
+	//
+	//a := len1 / 2
+	//b := len2 / 2
 
 }
 
