@@ -19,35 +19,16 @@ import "fmt"
 链接：https://leetcode-cn.com/problems/longest-palindromic-substring
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-解题思路：
-//TODO Manacher算法用于解该题最好，但是没看懂，之后再看吧
-看到最长回文子串，我第一想法就是先看看之前的无重复子串的思路能不能用上
-同样的，
-时间效率O()
+【解题思路】
+遍历每一个元素，以当前元素为中心去寻找它的最大回文串，然后记录回文串长度，并找到最大值。
+时间效率O(n2)
 空间效率O()
-总结：
+总结：中心扩展法，理解起来比较简单，但是算法复杂度较高，马拉车算法时间复杂度低（O(n)），但理解有些困难，并且不具有泛用性
 */
 
-//思路1-------------------------------------------
+//【代码】
 
-func longestPalindrome(s string) string {
-	start, end, length, max := 0, 0, 0, 0
-	m := make(map[int32]int)
-	for i, v := range s {
-
-		if old, ok := m[v]; ok == true && start < old+1 {
-			start = old + 1
-		}
-		end = i
-		m[v] = i
-		length = end - start + 1
-		if max < length {
-			max = length
-		}
-	}
-	return max
-}
-func longestPalindrome1(s string) string { // 中心扩展法
+func longestPalindrome(s string) string { // 中心扩展法
 	if len(s) < 1 {
 		return ""
 	}
@@ -80,9 +61,7 @@ func expandAroundCenter(s string, left int, right int) int {
 	return R - L - 1
 }
 
-//他人优秀代码----------------------------------
-
-//主函数-------------------------------------------
+//【主函数】
 
 func main() {
 	s := "abba"
