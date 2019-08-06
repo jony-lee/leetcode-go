@@ -56,6 +56,30 @@ func convert(s string, numRows int) string {
 }
 
 //他人优秀代码----------------------------------
+// 按行
+func convert1(s string, numRows int) string {
+	if s == "" || len(s) <= numRows || numRows < 2 {
+		return s
+	}
+	result := make([]uint8, len(s))
+	v := 0
+	for i := 0; i < numRows; i++ { // i 为
+		for k := i; k < len(s); k += (numRows - 1) * 2 { // k为要取的原字符串中字符的索引号
+			result[v] = s[k]
+			v++
+			if i != 0 && i != numRows-1 {
+				next := k + (numRows-i-1)*2
+				if next < len(s) {
+					result[v] = s[next]
+					v++
+				}
+			}
+		}
+
+	}
+
+	return string(result)
+}
 
 //主函数-------------------------------------------
 
