@@ -1,6 +1,9 @@
 package main
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 //【题目】
 /*
@@ -21,7 +24,7 @@ import "sort"
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 */
-// TODO
+
 //【思路】
 /*
 
@@ -32,7 +35,7 @@ import "sort"
 //【代码】
 func threeSum(nums []int) [][]int {
 	sort.Ints(nums) // 排序
-	n := [][]int{}
+	var n [][]int
 	m := make(map[[3]int]int)          // 使用一个字典来去重
 	for i := 1; i < len(nums)-1; i++ { // 从nums[1,len(s)} 中任选一个元素 i
 		for v, u := 0, len(nums)-1; v < i && u > i; { // 将 最小的元素 v ,和最大的元素 u 与 i 相加 v + i + u
@@ -54,9 +57,35 @@ func threeSum(nums []int) [][]int {
 	return n
 }
 
+//【代码1】
+func threeSum1(nums []int) [][]int {
+	sort.Ints(nums)
+	var ret [][]int
+	m := make(map[[3]int]int)
+	for i := 0; i < len(nums)-1 && nums[i] <= 0; i++ {
+		for j, k := i+1, len(nums)-1; j < k; {
+			a, b, c := nums[i], nums[j], nums[k]
+			if a+b+c == 0 {
+				if _, ok := m[[3]int{a, b, c}]; !ok {
+					ret = append(ret, []int{a, b, c})
+				}
+				m[[3]int{a, b, c}] = 1
+				j++
+				k--
+			} else if a+b+c < 0 {
+				j++
+			} else {
+				k--
+			}
+		}
+	}
+	return ret
+}
+
 //【主函数】
 func main() {
-
+	a := []int{-1, 0, 1, 2, -1, -4}
+	fmt.Println(threeSum(a))
 }
 
 //【总结】：
