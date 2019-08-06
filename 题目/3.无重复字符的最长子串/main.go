@@ -66,8 +66,6 @@ func lengthOfLongestSubstring(s string) int {
 	return max
 }
 
-//他人优秀代码----------------------------------
-
 //主函数-------------------------------------------
 
 func main() {

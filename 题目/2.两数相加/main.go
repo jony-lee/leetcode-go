@@ -143,8 +143,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 //	return m
 //}
 
-//他人优秀代码----------------------------------
-
 //-------------------------------------------------------
 
 func main() {
