@@ -34,7 +34,7 @@ package main
 
 //【代码】
 func generateParenthesis(n int) []string {
-	ans := []string{}
+	ans := []string{} // 记录所有可能
 	backtrack(&ans, "", 0, 0, n)
 	return ans
 }
