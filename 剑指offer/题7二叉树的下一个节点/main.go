@@ -35,3 +35,27 @@ func FindNextTreeNode(node *treeNode) *treeNode {
 	}
 	return nil
 }
+func FindNextTreeNode_1(node *treeNode) *treeNode {
+	//当前节点为空
+	if node == nil {
+		return nil
+	}
+	//向子节点搜索
+	if node.rc != nil {
+		node = node.rc
+		for node.lc != nil {
+			node = node.lc
+		}
+		return node
+	}
+	//向父节点搜索,若该节点是父节点的右孩子，
+	// 需要继续寻找父节点的父节点，直到该节点是父节点的左孩子
+	//则该父节点即为所求
+	p := node.parent
+	for p != nil && p.rc == node {
+		node = p
+		p = p.parent
+	}
+	return p
+
+}
