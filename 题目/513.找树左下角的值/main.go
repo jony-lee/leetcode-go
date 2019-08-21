@@ -64,6 +64,26 @@ func findBottomLeftValue(root *TreeNode) int {
 	return target.Val
 }
 
+func findBottomLeftValue1(root *TreeNode) int {
+	data := make([][]int, 0)
+	data = fun1(data, 0, root)
+	return data[len(data)-1][0]
+}
+
+func fun1(data [][]int, i int, node *TreeNode) [][]int {
+	if len(data)-1 < i {
+		data = append(data, []int{})
+	}
+	data[i] = append(data[i], node.Val)
+	if node.Left != nil {
+		data = fun1(data, i+1, node.Left)
+	}
+	if node.Right != nil {
+		data = fun1(data, i+1, node.Right)
+	}
+	return data
+}
+
 //【主函数】
 func main() {
 

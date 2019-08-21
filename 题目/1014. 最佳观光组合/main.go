@@ -51,7 +51,7 @@ func maxScoreSightseeingPair(A []int) int {
 		if res < preMax+A[j]-j {
 			res = preMax + A[j] - j
 		}
-		// 找到 A[i] + i 的最大值
+		// 几率j之前的 A[i] + i (j > i)的最大值
 		if preMax < A[j]+j {
 			preMax = A[j] + j
 		}
